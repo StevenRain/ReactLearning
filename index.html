@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var MessageBox = React.createClass({
+            render:function(){
+                return (<h1>Hello World!</h1>)
+            }
+        });
+
+        React.render( <MessageBox/>,
+                document.getElementById('app'),
+                function(){
+                    console.log('渲染完成啦！！');
+                }
+        )
+    </script>
+<body>
+    <div id="app"></div>
+</body>
+</html>
