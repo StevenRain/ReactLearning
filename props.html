@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react Learning!</title>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script type="text/jsx">
+
+    var MessageBox = React.createClass({
+        render:function () {
+            return(
+                    <div>
+                        <h1>组件的参数传递</h1>
+                        <SubMessage message="父组件给子组件的参数8888"/>
+                    </div>
+            );
+        }
+    });
+
+    var SubMessage = React.createClass({
+        render:function () {
+            var msg = this.props.message;
+            return(
+                    <h1>{msg}</h1>
+            );
+        }
+    });
+
+    React.render(
+            <MessageBox/>,
+            document.getElementById('app')
+    );
+</script>
+</body>
+</html>
