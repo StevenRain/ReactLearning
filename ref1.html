@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+<body>
+    <div id="app"></div>
+
+    <script type="text/jsx">
+        var ClickApp = React.createClass ({
+            getInitialState:function(){
+                return{
+                    inputValue: 'input value',
+                    selectValue: 'A',
+                    radioValue: 'B',
+                    textAreaValue:'some text here,,,,'
+                }
+            },
+            handleSubmit:function (e) {
+                e.preventDefault();
+                console.log("from submitting..");
+                console.log(this.refs['goodInput'].getDOMNode().value);
+                console.log(React.findDOMNode(this.refs['goodInput']).value);
+            },
+            render:function () {
+                return (
+                        <form onSubmit={this.handleSubmit}>
+                            <input ref="goodInput" type="text" defaultValue={this.state.inputValue}/>
+                            <br/>
+                            选项:
+                            <select ref="goodSelect">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                            <br/>
+                            <p>Radio Button</p>
+                            <input name="goodRadio" type="radio" value="A"/>
+                            <input name="goodRadio" type="radio" value="B"/>
+                            <input name="goodRadio" type="radio" value="C"/>
+                            <br/>
+                            <input name="checkBoxGroup" type="checkbox" value="A"/>
+                            <input name="checkBoxGroup" type="checkbox" value="B"/>
+                            <input name="checkBoxGroup" type="checkbox" value="C"/>
+                            <br/>
+                            <textarea rows="5" cols="10" ref="goodText"></textarea>
+                            <button type="submit">提交</button>
+                        </form>
+                )
+            }
+        });
+
+        React.render(
+                <ClickApp/>,
+                document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
