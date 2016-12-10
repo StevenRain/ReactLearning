@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react Learning!</title>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/jsx">
+
+        let MessageBox = React.createClass({
+            getInitialState:function(){
+                return {
+                    isVisible: true,
+                    titleMessage: 'HelloWorld',
+                }
+            },
+            render:function () {
+                var styleObj = {
+                    display: this.state.isVisible ? 'block' : 'none',
+                };
+
+                return (
+                    <div>
+                        <h1 style={styleObj}>{this.state.titleMessage}</h1>
+                        <SubMessage/>
+                    </div>
+                );
+            }
+        });
+
+        var SubMessage = React.createClass({
+            render:function () {
+                return(
+                        <h1>写代码很有意思</h1>
+                );
+            }
+        });
+
+        var obj = React.render(
+                <MessageBox/>,
+                document.getElementById('app'),
+                function () {
+                    console.log('success');
+                }
+        )
+    </script>
+</body>
+</html>

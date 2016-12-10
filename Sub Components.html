@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react Learning!</title>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/jsx">
+
+        let MessageBox = React.createClass({
+            render:function () {
+                var submessages = [];
+                for(var i=0;i<10;i++){
+                    submessages.push(
+                            <SubMessage key={i}/>
+                    );
+                }
+                return (
+                        <div>
+                            <h1>Take a siesta!</h1>
+                            <SubMessage/>
+                            {submessages}
+                        </div>
+                );
+            }
+        });
+
+        var SubMessage = React.createClass({
+            render:function () {
+                return(
+                        <div>
+                            <h1>写代码很有意思</h1>
+                            <Footer/>
+                        </div>
+                );
+            }
+        });
+
+        var Footer = React.createClass({
+            render:function () {
+                return(
+                        <small>因为我们在用代码创造</small>
+                );
+            }
+        });
+
+        React.render(
+                <MessageBox/>,
+                document.getElementById('app'),
+                function () {
+                    console.log('success');
+                }
+        )
+    </script>
+</body>
+</html>
