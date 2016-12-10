@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+<body>
+    <div id="app"></div>
+
+    <script type="text/jsx">
+        var ClickApp = React.createClass ({
+            getInitialState:function(){
+                return{
+                    clickCount : 0,
+                }
+            },
+            handleClick:function(e){
+                this.setState({
+                    clickCount : this.state.clickCount + 1,
+                });
+                //不需要react优化时使用native，否则输出结果都是null,native会有兼容问题
+                console.log(e.nativeEvent.button);
+            },
+            render:function () {
+                return (
+                        <div>
+                            <h2>点击下面的按钮</h2>
+                            <button onClick={this.handleClick}>Click Me</button>
+                            <p>一共点击了{this.state.clickCount}下</p>
+                        </div>
+                )
+            }
+        });
+
+        React.render(
+                <ClickApp/>,
+                document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
