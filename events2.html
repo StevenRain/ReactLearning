@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+<body>
+    <div id="app"></div>
+
+    <script type="text/jsx">
+        var ClickApp = React.createClass ({
+            getInitialState:function(){
+                return{
+                    inputValue: 'input value',
+                    selectValue: 'A',
+                    radioValue: 'B',
+                    textAreaValue:'some text here,,,,'
+                }
+            },
+            handleInput:function(e){
+                this.setState({
+                    inputValue: e.target.value,
+                })
+            },
+            handleSelect:function (e) {
+                this.setState({
+                    selectValue: e.target.value,
+                })
+            },
+            handleSubmit:function (e) {
+                //防止默认提交表单
+                e.preventDefault();
+                console.log("from submitting..");
+                console.log(e);
+            },
+            render:function () {
+                return (
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" value={this.state.inputValue} onChange={this.handleInput}/>
+                            <br/>
+                            <select value={this.state.selectValue} onChange={this.handleSelect}>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                            <br/>
+                            <p>Radio Button</p>
+                            <input name="goodRadio" type="radio" value="A"/>
+                            <input name="goodRadio" type="radio" defaultChecked value="B"/>
+                            <input name="goodRadio" type="radio" value="C"/>
+                            <br/>
+                            <input name="checkBoxGroup" type="checkbox" value="A"/>
+                            <input name="checkBoxGroup" type="checkbox" value="B"/>
+                            <input name="checkBoxGroup" type="checkbox" checked value="C"/>
+                            <br/>
+                            <textarea value={this.state.textAreaValue}></textarea>
+                            <button type="submit">提交</button>
+                        </form>
+                )
+            }
+        });
+
+        React.render(
+                <ClickApp/>,
+                document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
